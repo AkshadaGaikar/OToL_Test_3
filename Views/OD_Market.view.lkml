@@ -1,24 +1,45 @@
-view: od_monthly_bookings_agg  { 
-  sql_table_name: `MIDT_CONSUMPTION.OD_MONTHLY_BOOKINGS_AGG` ;;
+view: OD_Market  {
+  sql_table_name: `MIDT_CONSUMPTION.CLIENT_AIRPORT_PAIR_DIM` ;;
 
-  dimension: GDS_ID { 
+  dimension: AIRPP_ID {
     type: string
     primary_key: yes
-    sql: ${TABLE}.GDS_ID ;;
-    hidden: no,
+    sql: ${TABLE}.AIRPP_ID ;;
+    hidden: no
   }
 
-  dimension: Departure_Date_key { 
-    type: date
+  dimension: CLIENT_ID {
+    type: string
     primary_key: no
-    sql: ${TABLE}.DEPARTURE_DATE ;;
-    hidden: no,
+    sql: ${TABLE}.CLIENT_ID ;;
+    hidden: no
   }
 
-  measure: Passenger_Count { 
-    type: number
+  dimension: Origin_Airport_Code {
+    type: string
     primary_key: no
-    sql: ${TABLE}.PASSENGER_COUNT ;;
-    hidden: no,
+    sql: ${TABLE}.AIRPP_DEPART_AIRP_CODE ;;
+    hidden: no
+  }
+
+  dimension: Origin_City_Code {
+    type: string
+    primary_key: no
+    sql: ${TABLE}.CTY_DEP_CITY_CODE ;;
+    hidden: no
+  }
+
+  dimension: Origin_Country_Code {
+    type: string
+    primary_key: no
+    sql: ${TABLE}.CO_DEP_CNTRY_CODE ;;
+    hidden: no
+  }
+
+  dimension: Origin_Region_Code {
+    type: string
+    primary_key: no
+    sql: ${TABLE}.WA_DEP_WA_CODE ;;
+    hidden: no
   }
 }
